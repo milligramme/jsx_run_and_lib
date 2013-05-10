@@ -3,20 +3,9 @@ var message = function(mess) {
 };
 
 // if (__FILE__ == $0) みたいなの
-try {
-  var s = $.stack.replace(/^\[/,"").replace(/\]\n$/,"");
-  var f = new File($.fileName).name;  
-  if (s == f) {
-    
+if ($.stack.replace(/[\[\]\n]/g,"") == new File($.fileName).name) {
     
   // includeされたときは実行されない
-    message(app.version);
+  message(app.version);
     
-  }
-  else {
-    alert($.stack + " で実行したよ");
-  }
-}
-catch(e){
-  alert(e);
 }
